@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let [a, b, c, d, e, f] = ['', true, 0, null, undefined]
+        console.log(!!a, !!b, !!c, !!d, !!e, !!f)
+
+        //truly变量：!!a === true
+        //falsely变量：!!a === false
+
+
+        //以下是 falsely变量。除此之外都是truly变量
+        !!0 === false
+        !!NaN === false
+        !!'' === false
+        !!null === false
+        !!undefined === false
+        !!false === false
+
+
+        //if语句判断的不是true or false,而是truly or falsely
+        const a1 = 1
+        if (a1) {
+            //a1是truely变量 执行if内语句
+        }
+        const a2 = ''
+        if (a2) {
+            //a2是falsely变量 所以不执行if内语句
+        }
+
+        //Q:type of 能判断哪些类型？
+        //A:值类型(Number、Boolean、String、Null、Undefined、Symbol)、是否是Object、Function
+
+
+        //Q:何时使用'=='？何时使用'==='
+        //A:一般情况都使用'===',只有判断对象是否为null或undefined时用'=='，a==null相当于a===null||a===undefined
+
+        //Q:值类型和引用类型的区别？
+        //A:举例：
+            const q = {x:100,y:200}
+            const q1 = q
+            let x1 = q.x
+            q1.x = 101
+            x1 = 102
+            console.log(q)  
+            //答案为101。q1=q，内存中创建一个指针指向{x:100,y:200},此时q和q1都指向同一个对象，修改q1.x，对象本身改变，所以q.x改变
+
+        //Q:手写深拷贝
+        //A:
+            // 要点：
+            //     1、注意判断值类型和引用类型
+            //     2、注意判断是数组和对象
+            //     3、递归
+            
+    </script>
+</body>
+
+</html>
