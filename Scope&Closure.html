@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域、闭包</title>
+</head>
+
+<body>
+    <script>
+        // 作用域{
+        //     1、全局作用域
+        //     2、函数作用域
+        //     3、ES6块级作用域(在大括号{}内)
+        // }
+
+
+        //自由变量
+            //1、一个变量在当前作用域没有定义，但使用了
+            //2、向上级作用域，一层一层依次寻找，直到找到为止
+            //3、如果到全局作用域都没找到，则报错 xx is not defined
+        // let a = 0
+        // function fn1(){
+        //     let a1 = 100
+        //     function fn2(){
+        //         let a2 = 200
+        //         function fn3(){
+        //             let a3 = 300
+        //             let s = a+a1+a2+a3
+        //             return s
+        //         }
+        //         fn3()
+        //     }
+        //     fn2()
+        // }
+        // fn1()
+
+
+        //闭包例子
+        //1、函数作为返回值
+        // function print1(){
+        //     let a = 100
+        //     return function(){
+        //         console.log(a)
+        //     }
+        // }
+        // let a = 200
+        // let closure1 = print1()
+        // closure1()
+
+        //2、函数作为参数
+        function print2(fn){
+            let a = 100
+            fn()
+        }
+        let a = 200
+        let closure2 = function(){
+            console.log(a)
+        }
+        print2(closure2)
+
+
+        //-------------自由变量的查找，是在函数定义的地方向上级作用域查找，而不是在函数执行的地方----------
+    </script>
+</body>
+
+</html>

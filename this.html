@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this</title>
+</head>
+
+<body>
+    <script>
+        //this取什么值  是在函数执行的时候确定的  不是在函数定义的时候确定的
+        function fn(){
+            console.log(this)
+        }
+        // fn()     //window-----作为普通函数被调用 
+        // fn.call({x:1})  //{x:1}----call
+        // let f = fn.bind({x:2})
+        // f()             //{x:2}----bind
+        //call和bind区别：call可直接执行;bind会返回一个新的函数，需要再次执行新的函数
+
+        // this指向
+        // 1、作为普通函数被调用---window
+        // 2、call bind apply---方法内的对象
+        // 3、作为对象方法被调用---该对象
+        // 4、在class方法中被调用---class的实例对象
+        // 5、定时器---window
+        // 6、箭头函数---上级作用域的this
+    </script>
+</body>
+
+</html>
