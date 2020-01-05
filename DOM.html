@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //DOM本质：从HTML解析出来的树状结构
+        
+
+        //property是一种形式，修改对象属性，不会提现到html结构中
+        //attribute是一个方法，修改html属性，会改变html结构
+        //二者都可能引起DOM的重新渲染  尽量用property
+
+
+        //DOM性能优化：
+        //1、DOM查询做缓存，比如for中的length提前获取，避免每次遍历都获取一次
+        //2、将频繁操作改为一次性操作。比如append许多child，先把所有元素添加到'文档片段(document.creatDocumentFragment)'中，最后再插入到DOM树中
+        
+    </script>
+</body>
+</html>

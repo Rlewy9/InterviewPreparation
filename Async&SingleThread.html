@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async&SingleThread</title>
+</head>
+<body>
+    <script>
+        // 因为JS是单线程语言，同一时间只能做一件事，所以采用异步
+        //异步：通过回调函数  不会造成阻塞
+            // console.log(100)
+            // setTimeout(() => {
+            //     console.log(200)
+            // }, 1000);
+            // console.log(300)    //执行结果100 300 1S后打印200
+        //同步：会造成阻塞
+            // console.log(100)
+            // alert(200)
+            // console.log(300)    //先打印100，弹框200，点击确定才会打印300
+
+
+
+        //异步应用场景: AJax 图片加载  定时任务  
+    </script>
+</body>
+</html>

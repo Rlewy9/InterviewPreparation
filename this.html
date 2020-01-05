@@ -27,6 +27,46 @@
         // 4、在class方法中被调用---class的实例对象
         // 5、定时器---window
         // 6、箭头函数---上级作用域的this
+
+        
+        //手写bind函数  最终返回一个函数
+        Function.prototype.bind1 = function(){
+            //参数可以通过arguments来获取
+            //Array.prototype.slice.call()  可以把列表中的数组分离出来
+            let params = Array.prototype.slice.call(arguments)
+            //_this为band1()传入的this
+            let _this = params.shift()
+            console.log('this是:',_this)
+            //self为函数本身
+            let self = this
+            //返回函数本身.apply(传入的this,剩余参数)
+            return function(){
+                self.apply(_this,params)
+            }
+        }
+        //手写call函数   call和apply写法相同
+        Function.prototype.call1 = function(){
+            let params = Array.prototype.slice.call(arguments)
+            let _this = params.shift()
+            let self = this
+            return self.apply(_this,params)
+        }
+        function fn1(a,b,c){
+            console.log('this'+JSON.stringify(this))
+            console.log(a,b,c)
+            return 'this is fn1'
+        }
+        //call1和apply1
+        // fn1.call1({x:1},'2','3','4')
+        //bind1
+        // let fn2 = fn1.bind1({x:1},'2','3','4')
+        // fn2()
+
+
+
+
+
+
     </script>
 </body>
 
