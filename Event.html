@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event</title>
+</head>
+
+<body>
+    <div class="div1">
+        <p id='p1'>激活</p>
+        <p id='p2'>取消</p>
+        <p id='p3'>取消</p>
+        <p id='p4'>取消</p>
+        <p id='p5'>取消</p>
+    </div>
+    <div class="div2">
+        <button id="btn1">点击</button>
+    </div>
+    <script>
+        //通用事件绑定
+        function bindEvent(elem, type, selector, fn){
+            //判断fn是否存在，存在则传4个参数，为事件代理，不存在则传3个参数，普通事件绑定
+            if(fn == null){
+                //普通事件绑定
+                fn = selector
+                selector = null
+            }
+            elem.addEventListener(type,e=>{
+                let target = e.target
+                //普通事件绑定
+                if(selector == null){
+                    fn.call(target,e)       //把this指向改为target
+                }
+                //事件代理
+                else{
+                    if(target.maches(selector)){   //maches()判断选择器是否符合
+                        fn.call(target,e)
+                    }
+                }
+            })
+        }
+        const p1 = document.getElementById('p1')
+        bindEvent(p1,'click',e=>{ 
+            console.log('激活')
+            e.stopPropagation()         //停止冒泡
+        })
+        const body = document.body
+        bindEvent(body,'click',e=>{
+            console.log('取消')
+        })
+
+        //事件冒泡:基于DOM树形结构，事件会顺着触发元素往上冒泡。  应用场景一般为事件代理。例如瀑布流。
+        //e.preventDefault() --阻止默认行为
+        //e.target --获取触发的元素
+
+
+        //Q:什么是事件冒泡？
+        //A:基于DOM树形结构，事件会顺着触发元素往上冒泡。  应用场景一般为事件代理。例如瀑布流。
+
+        //Q:无限下拉图片列表，如何监听每个图片的点击？
+        //A:1、事件代理。2、用e.target获取元素。3、用maches判断是否触发元素。
+    </script>
+</body>
+
+</html>

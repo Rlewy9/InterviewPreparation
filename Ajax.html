@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+</head>
+<body>
+    <script>
+        //XMLHttpRequest()
+        let xhr = new XMLHttpRequest()
+        xhr.open(type, url, async)  //type: 'GET'、'POST'...;url: 请求地址;async: 是否为异步,true or false;
+        xhr.onreadystatechange = function(){
+            //readyState: 
+            //0--未初始化(还没有调用send()方法);
+            //1--载入(已调用send(),正在发送请求);
+            //2--载入完成(send()发送完成，已经接受到全部响应内容)
+            //3--交互(正在解析相应内容)
+            //4--完成(响应内容解析完成，可以在客户端内调用)
+            if(xhr.readyState === 4){   
+                //status:
+                //2xx--表示成功处理请求，如200
+                //3xx--需要重定向，浏览器直接跳转，如301(永久重定向，浏览器永久跳转另一个页面) 302(临时重定向，浏览器临时跳转另一个页面，下次访问还会再到本页面) 304(资源未改变，浏览器用缓存的资源)
+                //4xx--客户端请求错误，如404(未找到)、403(请求没有权限。一般为登陆相关)
+                //5xx--服务端错误
+                if(xhr.status === 200){
+                    console.log(xhr.responseText)
+                }
+                else{
+                    console.log('error')
+                }
+            }
+        }
+        xhr.send()          //get为null   post为请求参数 **参数为字符串，需要用JSON.stringify()转换
+    
+
+
+        //同源策略：ajax请求时，浏览器要求当前网页和server必须同源。  同源：协议、域名、端口号，三者必须一致。
+        //加载图片 js css可无视同源策略。  浏览器无限制 服务端可设置防盗链
+        //图片标签可用于统计打点。
+        //跨域：所有的跨域，都需要server端的配合和允许。
+
+        //JSONP
+            //<script>可以绕过跨域，服务器可以任意返回动态拼接的数据，所以script就可以获得跨域的数据，前提是服务端愿意返回
+
+    </script>
+</body>
+</html>
