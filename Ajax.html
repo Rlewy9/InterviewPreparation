@@ -42,8 +42,10 @@
         //跨域：所有的跨域，都需要server端的配合和允许。
 
         //JSONP
-            //<script>可以绕过跨域，服务器可以任意返回动态拼接的数据，所以script就可以获得跨域的数据，前提是服务端愿意返回
+            //<script>可以绕过跨域，服务器可以任意返回动态拼接的数据，所以script就可以获得跨域的数据，前提是服务端愿意返回。  $.ajax({dataType:'jsonp'})
+        
 
+        //cors:服务端设置http-header
     </script>
 </body>
 </html>
